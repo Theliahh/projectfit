@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace ProjectFit
 {
-    [Activity(Label = "ProjectFit", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Project Fit", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
