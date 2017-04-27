@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="ProjectFit.ProjectFit" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="16" />
-	<application android:label="Project Fit"></application>
+	<application android:label="Project Fit" android:theme="@android:style/Theme.Material.Light"></application>
+
+  
 </manifest>
