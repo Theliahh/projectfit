@@ -4,6 +4,7 @@ using Android.App;
 using Android.Widget;
 using Android.OS;
 using Environment = System.Environment;
+using SQLite;
 
 namespace ProjectFit
 {
@@ -27,8 +28,22 @@ namespace ProjectFit
             string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFileName);
 
+            var db = new SQLiteConnection(path);
+            db.CreateTable<Workout>();
 
 
+            //Add all possible exercsises now
+            Exercise BenchPress  = new Exercise("Bench Press",1,"Arms");
+            Exercise BarCurls = new Exercise("Bar Curls",2,"Arms");
+            Exercise DumbellCurls = new Exercise("Dumbell Curls",3,"Arms");
+            Exercise Pushups = new Exercise("Pushups",4,"Arms");
+            Exercise InclineBench = new Exercise("Incline Bench Press", 5, "Arms");
+            /*
+             * MuscleGroup can be Arms, Legs, Core, Shoulders (for now)
+             */
+            Workout premadeUpperBodyWorkout = new Workout("Arms","Basic Upperbody",false);
+            List<WorkoutStep> steps = new List<WorkoutStep>(); 
+                
             mItems = new List<string> {"one", "two", "three"};
 
             LoadPremadeWorkouts(workoutListView);
