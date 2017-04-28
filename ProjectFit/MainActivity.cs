@@ -41,9 +41,37 @@ namespace ProjectFit
             /*
              * MuscleGroup can be Arms, Legs, Core, Shoulders (for now)
              */
-            Workout premadeUpperBodyWorkout = new Workout("Arms","Basic Upperbody",false);
-            List<WorkoutStep> steps = new List<WorkoutStep>(); 
-                
+
+            List<WorkoutStep> upperBodySteps = new List<WorkoutStep>
+            {
+                new WorkoutStep()
+                {
+                    Reps = 8,
+                    Sets = 3,
+                    ExerciseId = 1
+                },
+                new WorkoutStep()
+                {
+                    Reps = 20,
+                    Sets = 3,
+                    ExerciseId = 4
+                },
+                new WorkoutStep()
+                {
+                    Reps = 8,
+                    Sets = 3,
+                    ExerciseId = 5
+                },
+                new WorkoutStep()
+                {
+                    Reps = 10,
+                    Sets = 4,
+                    ExerciseId = 2
+                }
+            };
+            Workout premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
+
+
             mItems = new List<string> {"one", "two", "three"};
 
             LoadPremadeWorkouts(workoutListView);

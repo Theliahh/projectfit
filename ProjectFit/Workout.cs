@@ -23,11 +23,12 @@ namespace ProjectFit
         private List<WorkoutStep> steps;
         private bool isCustom;
 
-        public Workout(string muscleGroup, string name, bool custom)
+        public Workout(string muscleGroup, string name, bool custom,List<WorkoutStep> newSteps)
         {
             isCustom = custom;
             MuscleGroup = muscleGroup;
             Name = name;
+            steps = newSteps;
         }
 
     }
