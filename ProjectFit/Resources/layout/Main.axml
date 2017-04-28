@@ -26,4 +26,14 @@
             android:id="@+id/customWorkoutsButton"
             android:layout_marginLeft="-4dp" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/workoutListView" />
 </LinearLayout>

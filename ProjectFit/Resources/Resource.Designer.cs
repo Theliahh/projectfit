@@ -41,22 +41,6 @@ namespace ProjectFit
 			}
 		}
 		
-		public partial class Color
-		{
-			
-			// aapt resource value: 0x7f050000
-			public const int theme_devicedefault_background = 2131034112;
-			
-			static Color()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Color()
-			{
-			}
-		}
-		
 		public partial class Drawable
 		{
 			
@@ -76,14 +60,17 @@ namespace ProjectFit
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070002
-			public const int customWorkoutsButton = 2131165186;
+			// aapt resource value: 0x7f050002
+			public const int customWorkoutsButton = 2131034114;
 			
-			// aapt resource value: 0x7f070001
-			public const int premadeWorkoutsButton = 2131165185;
+			// aapt resource value: 0x7f050001
+			public const int premadeWorkoutsButton = 2131034113;
 			
-			// aapt resource value: 0x7f070000
-			public const int topButtonLayout = 2131165184;
+			// aapt resource value: 0x7f050000
+			public const int topButtonLayout = 2131034112;
+			
+			// aapt resource value: 0x7f050003
+			public const int workoutListView = 2131034115;
 			
 			static Id()
 			{
@@ -126,22 +113,6 @@ namespace ProjectFit
 			}
 			
 			private String()
-			{
-			}
-		}
-		
-		public partial class Style
-		{
-			
-			// aapt resource value: 0x7f060000
-			public const int Theme_Custom = 2131099648;
-			
-			static Style()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Style()
 			{
 			}
 		}
