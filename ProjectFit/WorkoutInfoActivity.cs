@@ -29,7 +29,7 @@ namespace ProjectFit
             var workoutId = Intent.GetIntExtra("workoutId", 0);
 
             Button btnStartButton = FindViewById<Button>(Resource.Id.btnWorkoutInfoStart);
-            ListView exercsiseListView = FindViewById<ListView>(Resource.Id.workoutListView);
+            ListView exerciseListView = FindViewById<ListView>(Resource.Id.workoutInfoListView);
 
             var sqliteFileName = "workoutDatabaseTest1.db3";
             string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -55,7 +55,7 @@ namespace ProjectFit
 
             var adapter = new WorkoutStepListAdapter(this, displaySteps);
 
-            exercsiseListView.Adapter = adapter;
+            exerciseListView.Adapter = adapter;
 
 
 

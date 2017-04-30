@@ -40,6 +40,9 @@ namespace ProjectFit
             db.CreateTable<Exercise>();
             db.CreateTable<WorkoutStep>();
 
+            db.DeleteAll<Workout>();
+            db.DeleteAll<Exercise>();
+            db.DeleteAll<WorkoutStep>();
 
             //Add all possible exercsises now
             AllExercises = new List<Exercise>();
