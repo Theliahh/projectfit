@@ -18,7 +18,7 @@ namespace ProjectFit
     {
         public string MuscleGroup { get; set; }
         public string Name { get; set; }
-        [PrimaryKey]
+        [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
         public List<WorkoutStep> Steps;
         public bool IsCustom;

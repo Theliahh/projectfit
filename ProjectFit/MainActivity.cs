@@ -29,7 +29,7 @@ namespace ProjectFit
             Button customWorkoutsButton = FindViewById<Button>(Resource.Id.customWorkoutsButton);
 
 
-            var sqliteFileName = "workoutDatabase.db3";
+            var sqliteFileName = "workoutDatabaseTest1.db3";
             string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFileName);
             mPremadeWorkoutList = new List<Workout>();
@@ -57,40 +57,47 @@ namespace ProjectFit
              * MuscleGroup can be Arms, Legs, Core, Shoulders (for now)
              */
 
+            var allWorkouts = db.Table<Workout>();
+
             List<WorkoutStep> upperBodySteps = new List<WorkoutStep>
+            {
+
+            };
+            Workout premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
+            var workoutId = db.Insert(premadeUpperBodyWorkout);
+            premadeUpperBodyWorkout.Id = workoutId;
+;           upperBodySteps = new List<WorkoutStep>
             {
                 new WorkoutStep()
                 {
                     Reps = 8,
                     Sets = 3,
-                    ExerciseId = 1
+                    ExerciseId = 1,
+                    WorkoutId = workoutId
                 },
                 new WorkoutStep()
                 {
                     Reps = 20,
                     Sets = 3,
-                    ExerciseId = 4
+                    ExerciseId = 4,
+                    WorkoutId = workoutId
                 },
                 new WorkoutStep()
                 {
                     Reps = 8,
                     Sets = 3,
-                    ExerciseId = 5
+                    ExerciseId = 5,
+                    WorkoutId = workoutId
                 },
                 new WorkoutStep()
                 {
                     Reps = 10,
                     Sets = 4,
-                    ExerciseId = 2
+                    ExerciseId = 2,
+                    WorkoutId = workoutId
                 }
             };
-            Workout premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
-            db.Insert(premadeUpperBodyWorkout);
-            db.Query<Workout>("")
-            foreach (var workoutStep in upperBodySteps)
-            {
-                workoutStep.WorkoutId = 
-            }
+
             foreach (var exercise in AllExercises)
             {
                 try

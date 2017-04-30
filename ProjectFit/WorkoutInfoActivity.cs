@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ProjectFit.Resources;
 using SQLite;
 using Environment = System.Environment;
 
@@ -30,7 +31,7 @@ namespace ProjectFit
             Button btnStartButton = FindViewById<Button>(Resource.Id.btnWorkoutInfoStart);
             ListView exercsiseListView = FindViewById<ListView>(Resource.Id.workoutListView);
 
-            var sqliteFileName = "workoutDatabase.db3";
+            var sqliteFileName = "workoutDatabaseTest1.db3";
             string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFileName);
 
@@ -38,7 +39,9 @@ namespace ProjectFit
             AllExercises = db.Table<Exercise>().ToList();
             var workoutToDisplay = db.Get<Workout>(workoutId);
             List<WorkoutStepDisplay> displaySteps = new List<WorkoutStepDisplay>();
-
+            var stepsQuery = db.Table<WorkoutStep>();
+            stepsQuery = stepsQuery.Where(c => c.WorkoutId == workoutToDisplay.Id);
+            workoutToDisplay.Steps = stepsQuery.ToList();
             var workoutSteps = workoutToDisplay.Steps;
             foreach (var workoutStep in workoutSteps)
             {
@@ -50,6 +53,9 @@ namespace ProjectFit
                 });
             }
 
+            var adapter = new WorkoutStepListAdapter(this, displaySteps);
+
+            exercsiseListView.Adapter = adapter;
 
 
 
