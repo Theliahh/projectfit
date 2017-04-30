@@ -16,7 +16,7 @@ using Environment = System.Environment;
 
 namespace ProjectFit
 {
-    [Activity(Label = "WorkoutInfoActivity")]
+    [Activity(Label = "Workout Info")]
     public class WorkoutInfoActivity : Activity
     {
         private List<Exercise> AllExercises;
@@ -31,7 +31,9 @@ namespace ProjectFit
             Button btnStartButton = FindViewById<Button>(Resource.Id.btnWorkoutInfoStart);
             ListView exerciseListView = FindViewById<ListView>(Resource.Id.workoutInfoListView);
 
-            var sqliteFileName = "workoutDatabaseTest1.db3";
+            btnStartButton.Click += BtnStartButton_Click;
+
+            var sqliteFileName = "workoutDatabaseTest2.db3";
             string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFileName);
 
@@ -53,12 +55,18 @@ namespace ProjectFit
                 });
             }
 
+            this.Title = workoutToDisplay.Name;
             var adapter = new WorkoutStepListAdapter(this, displaySteps);
 
             exerciseListView.Adapter = adapter;
 
+        }
 
+        private void BtnStartButton_Click(object sender, EventArgs e)
+        {
+            var workoutActivity = new Intent(this, typeof(WorkoutActivity));
 
+            StartActivity(workoutActivity);
         }
     }
 }

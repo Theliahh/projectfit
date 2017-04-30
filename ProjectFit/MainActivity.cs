@@ -17,6 +17,7 @@ namespace ProjectFit
     {
         private List<Workout> mPremadeWorkoutList;
         private List<Exercise> AllExercises;
+        private Button newWorkoutButton;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -27,9 +28,11 @@ namespace ProjectFit
             ListView workoutListView = FindViewById<ListView>(Resource.Id.workoutListView);
             Button premadeWorkoutsButton = FindViewById<Button>(Resource.Id.premadeWorkoutsButton);
             Button customWorkoutsButton = FindViewById<Button>(Resource.Id.customWorkoutsButton);
+            newWorkoutButton = FindViewById<Button>(Resource.Id.btnNewWorkout);
+            newWorkoutButton.Visibility = Android.Views.ViewStates.Gone;
 
 
-            var sqliteFileName = "workoutDatabaseTest1.db3";
+            var sqliteFileName = "workoutDatabaseTest2.db3";
             string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFileName);
             mPremadeWorkoutList = new List<Workout>();
@@ -40,9 +43,9 @@ namespace ProjectFit
             db.CreateTable<Exercise>();
             db.CreateTable<WorkoutStep>();
 
-            db.DeleteAll<Workout>();
-            db.DeleteAll<Exercise>();
-            db.DeleteAll<WorkoutStep>();
+            //db.DeleteAll<Workout>();
+            //db.DeleteAll<Exercise>();
+            //db.DeleteAll<WorkoutStep>();
 
             //Add all possible exercsises now
             AllExercises = new List<Exercise>();
@@ -69,37 +72,44 @@ namespace ProjectFit
             Workout premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
             var workoutId = db.Insert(premadeUpperBodyWorkout);
             premadeUpperBodyWorkout.Id = workoutId;
-;           upperBodySteps = new List<WorkoutStep>
+            try{
+                db.Get<WorkoutStep>(workoutId);
+            }
+            catch
             {
-                new WorkoutStep()
+                upperBodySteps = new List<WorkoutStep>
                 {
-                    Reps = 8,
-                    Sets = 3,
-                    ExerciseId = 1,
-                    WorkoutId = workoutId
-                },
-                new WorkoutStep()
-                {
-                    Reps = 20,
-                    Sets = 3,
-                    ExerciseId = 4,
-                    WorkoutId = workoutId
-                },
-                new WorkoutStep()
-                {
-                    Reps = 8,
-                    Sets = 3,
-                    ExerciseId = 5,
-                    WorkoutId = workoutId
-                },
-                new WorkoutStep()
-                {
-                    Reps = 10,
-                    Sets = 4,
-                    ExerciseId = 2,
-                    WorkoutId = workoutId
-                }
-            };
+                    new WorkoutStep()
+                    {
+                        Reps = 8,
+                        Sets = 3,
+                        ExerciseId = 1,
+                        WorkoutId = workoutId
+                    },
+                    new WorkoutStep()
+                    {
+                        Reps = 20,
+                        Sets = 3,
+                        ExerciseId = 4,
+                        WorkoutId = workoutId
+                    },
+                    new WorkoutStep()
+                    {
+                        Reps = 8,
+                        Sets = 3,
+                        ExerciseId = 5,
+                        WorkoutId = workoutId
+                    },
+                    new WorkoutStep()
+                    {
+                        Reps = 10,
+                        Sets = 4,
+                        ExerciseId = 2,
+                        WorkoutId = workoutId
+                    }
+                };
+            }
+
 
             foreach (var exercise in AllExercises)
             {
@@ -125,11 +135,13 @@ namespace ProjectFit
             premadeWorkoutsButton.Click += (sender, args) =>
             {
                 LoadPremadeWorkouts(workoutListView);
+                newWorkoutButton.Visibility = Android.Views.ViewStates.Gone;
             };
 
             customWorkoutsButton.Click += (sender, args) =>
             {
                 workoutListView.Adapter = null;
+                newWorkoutButton.Visibility = Android.Views.ViewStates.Visible;
             };
 
         }
