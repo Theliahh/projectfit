@@ -16,12 +16,12 @@ namespace ProjectFit
     [Table("workouts")]
     public class Workout
     {
-        private string MuscleGroup { get; set; }
-        private string Name { get; set; }
+        public string MuscleGroup { get; set; }
+        public string Name { get; set; }
         [PrimaryKey,AutoIncrement]
-        private int Id { get; set; }
+        public int Id { get; set; }
         private List<WorkoutStep> steps;
-        private bool isCustom;
+        public bool isCustom;
 
         public Workout(string muscleGroup, string name, bool custom,List<WorkoutStep> newSteps)
         {
