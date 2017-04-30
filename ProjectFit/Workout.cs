@@ -20,15 +20,20 @@ namespace ProjectFit
         public string Name { get; set; }
         [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
-        private List<WorkoutStep> steps;
-        public bool isCustom;
+        public List<WorkoutStep> Steps;
+        public bool IsCustom;
 
         public Workout(string muscleGroup, string name, bool custom,List<WorkoutStep> newSteps)
         {
-            isCustom = custom;
+            IsCustom = custom;
             MuscleGroup = muscleGroup;
             Name = name;
-            steps = newSteps;
+            Steps = newSteps;
+        }
+
+        public Workout()
+        {
+            
         }
 
     }

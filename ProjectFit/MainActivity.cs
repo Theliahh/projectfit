@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Android.App;
+using Android.Content;
 using Android.Widget;
 using Android.OS;
 using ProjectFit.Resources;
@@ -34,7 +35,8 @@ namespace ProjectFit
             mPremadeWorkoutList = new List<Workout>();
 
             var db = new SQLiteConnection(path);
-            //db.CreateTable<Workout>();
+            db.CreateTable<Workout>();
+            db.CreateTable<Exercise>();
 
 
             //Add all possible exercsises now
@@ -81,6 +83,11 @@ namespace ProjectFit
                 }
             };
             Workout premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
+            foreach (var exercise in AllExercises)
+            {
+                db.Insert(exercise);
+            }
+            db.Insert(premadeUpperBodyWorkout);
             mPremadeWorkoutList.Add(premadeUpperBodyWorkout);
 
 
@@ -103,6 +110,9 @@ namespace ProjectFit
         private void WorkoutListViewOnItemClick(object o, AdapterView.ItemClickEventArgs itemClickEventArgs)
         {
             Console.WriteLine(mPremadeWorkoutList[itemClickEventArgs.Position].Name);
+            var infoActivity = new Intent(this, typeof(WorkoutInfoActivity));
+            infoActivity.PutExtra("workoutId", mPremadeWorkoutList[itemClickEventArgs.Position].Id);
+            StartActivity(infoActivity);
         }
 
         private void LoadPremadeWorkouts(ListView workoutListView)

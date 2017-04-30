@@ -17,11 +17,11 @@ namespace ProjectFit
     public class Exercise
     {
         [Unique]
-        private string Name { get; set; }
+        public string Name { get; set; }
         //TODO: steps for each exercise - private List<ExerciseStep> Steps;
         [PrimaryKey]
-        private int ExerciseId { get; set; }
-        private string MuscleGroup { get; set; }
+        public int ExerciseId { get; set; }
+        public string MuscleGroup { get; set; }
 
         public Exercise(string name, int id, string muscleGroup)
         {
@@ -29,6 +29,11 @@ namespace ProjectFit
             ExerciseId = id;
             MuscleGroup = muscleGroup;
             //Steps = steps;
+        }
+
+        public Exercise()
+        {
+            
         }
     }
 }

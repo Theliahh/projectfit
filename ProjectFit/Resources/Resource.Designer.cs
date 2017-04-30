@@ -60,6 +60,9 @@ namespace ProjectFit
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050005
+			public const int btnWorkoutInfoStart = 2131034117;
+			
 			// aapt resource value: 0x7f050002
 			public const int customWorkoutsButton = 2131034114;
 			
@@ -72,14 +75,26 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050004
 			public const int workoutInfoListView = 2131034116;
 			
-			// aapt resource value: 0x7f050006
-			public const int workoutListGroup = 2131034118;
+			// aapt resource value: 0x7f050007
+			public const int workoutListGroup = 2131034119;
 			
-			// aapt resource value: 0x7f050005
-			public const int workoutListName = 2131034117;
+			// aapt resource value: 0x7f050006
+			public const int workoutListName = 2131034118;
 			
 			// aapt resource value: 0x7f050003
 			public const int workoutListView = 2131034115;
+			
+			// aapt resource value: 0x7f050009
+			public const int workoutStepsListGroup = 2131034121;
+			
+			// aapt resource value: 0x7f050008
+			public const int workoutStepsListName = 2131034120;
+			
+			// aapt resource value: 0x7f05000b
+			public const int workoutStepsListReps = 2131034123;
+			
+			// aapt resource value: 0x7f05000a
+			public const int workoutStepsListSets = 2131034122;
 			
 			static Id()
 			{
@@ -102,6 +117,9 @@ namespace ProjectFit
 			
 			// aapt resource value: 0x7f030002
 			public const int WorkoutListLayout = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int WorkoutStepListLayout = 2130903043;
 			
 			static Layout()
 			{

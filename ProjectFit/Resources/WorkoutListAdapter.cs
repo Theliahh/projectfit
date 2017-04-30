@@ -13,7 +13,7 @@ using Java.Lang;
 
 namespace ProjectFit.Resources
 {
-    public class ViewHolder : Java.Lang.Object
+    partial class ViewHolder : Java.Lang.Object
     {
         public TextView txtName { get; set; }
         public TextView txtGroup { get; set; }

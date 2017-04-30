@@ -79,8 +79,11 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\WorkoutListAdapter.cs" />
+    <Compile Include="Resources\WorkoutStepListAdapter.cs" />
     <Compile Include="Workout.cs" />
+    <Compile Include="WorkoutInfoActivity.cs" />
     <Compile Include="WorkoutStep.cs" />
+    <Compile Include="WorkoutStepDisplay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -91,6 +94,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\WorkoutInfo.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\WorkoutStepListLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
