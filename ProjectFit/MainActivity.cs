@@ -35,8 +35,10 @@ namespace ProjectFit
             mPremadeWorkoutList = new List<Workout>();
 
             var db = new SQLiteConnection(path);
+            
             db.CreateTable<Workout>();
             db.CreateTable<Exercise>();
+            db.CreateTable<WorkoutStep>();
 
 
             //Add all possible exercsises now
@@ -83,11 +85,26 @@ namespace ProjectFit
                 }
             };
             Workout premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
+            db.Insert(premadeUpperBodyWorkout);
+            db.Query<Workout>("")
+            foreach (var workoutStep in upperBodySteps)
+            {
+                workoutStep.WorkoutId = 
+            }
             foreach (var exercise in AllExercises)
             {
-                db.Insert(exercise);
+                try
+                {
+                    db.Insert(exercise);
+                }
+                catch (Exception e)
+                {
+                    break;
+                }
             }
-            db.Insert(premadeUpperBodyWorkout);
+            db.InsertAll(upperBodySteps);
+            
+            
             mPremadeWorkoutList.Add(premadeUpperBodyWorkout);
 
 
