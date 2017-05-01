@@ -60,26 +60,32 @@ namespace ProjectFit
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f05000d
+			public const int btnAddNewExercise = 2131034125;
+			
+			// aapt resource value: 0x7f05000e
+			public const int btnDoneAddingExercise = 2131034126;
+			
 			// aapt resource value: 0x7f050005
 			public const int btnNewWorkout = 2131034117;
 			
 			// aapt resource value: 0x7f05000a
 			public const int btnNewWorkoutContinue = 2131034122;
 			
-			// aapt resource value: 0x7f050013
-			public const int btnSelectedExerciseContinue = 2131034131;
+			// aapt resource value: 0x7f050016
+			public const int btnSelectedExerciseContinue = 2131034134;
 			
-			// aapt resource value: 0x7f05001b
-			public const int btnStartWorkout = 2131034139;
+			// aapt resource value: 0x7f05001e
+			public const int btnStartWorkout = 2131034142;
 			
-			// aapt resource value: 0x7f050017
-			public const int btnWorkoutInfoStart = 2131034135;
+			// aapt resource value: 0x7f05001a
+			public const int btnWorkoutInfoStart = 2131034138;
 			
-			// aapt resource value: 0x7f05001c
-			public const int button2 = 2131034140;
+			// aapt resource value: 0x7f05001f
+			public const int button2 = 2131034143;
 			
-			// aapt resource value: 0x7f05001d
-			public const int button3 = 2131034141;
+			// aapt resource value: 0x7f050020
+			public const int button3 = 2131034144;
 			
 			// aapt resource value: 0x7f050004
 			public const int customWorkoutsButton = 2131034116;
@@ -90,11 +96,11 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050000
 			public const int exerciseListName = 2131034112;
 			
-			// aapt resource value: 0x7f05000d
-			public const int linearLayout1 = 2131034125;
-			
 			// aapt resource value: 0x7f050010
-			public const int linearLayout2 = 2131034128;
+			public const int linearLayout1 = 2131034128;
+			
+			// aapt resource value: 0x7f050013
+			public const int linearLayout2 = 2131034131;
 			
 			// aapt resource value: 0x7f050008
 			public const int newWorkoutName = 2131034120;
@@ -105,29 +111,26 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050003
 			public const int premadeWorkoutsButton = 2131034115;
 			
-			// aapt resource value: 0x7f050014
-			public const int selectExercisesListTitle = 2131034132;
+			// aapt resource value: 0x7f050017
+			public const int selectExercisesListTitle = 2131034135;
+			
+			// aapt resource value: 0x7f050018
+			public const int selectExercisesListView = 2131034136;
 			
 			// aapt resource value: 0x7f050015
-			public const int selectExercisesListView = 2131034133;
+			public const int selectedExerciseEditReps = 2131034133;
 			
 			// aapt resource value: 0x7f050012
-			public const int selectedExerciseEditReps = 2131034130;
+			public const int selectedExerciseEditSets = 2131034130;
 			
 			// aapt resource value: 0x7f05000f
-			public const int selectedExerciseEditSets = 2131034127;
+			public const int selectedExerciseName = 2131034127;
 			
-			// aapt resource value: 0x7f05000c
-			public const int selectedExerciseName = 2131034124;
+			// aapt resource value: 0x7f050014
+			public const int selectedExerciseReps = 2131034132;
 			
 			// aapt resource value: 0x7f050011
-			public const int selectedExerciseReps = 2131034129;
-			
-			// aapt resource value: 0x7f05000e
-			public const int selectedExerciseSets = 2131034126;
-			
-			// aapt resource value: 0x7f05000b
-			public const int textView1 = 2131034123;
+			public const int selectedExerciseSets = 2131034129;
 			
 			// aapt resource value: 0x7f050002
 			public const int topButtonLayout = 2131034114;
@@ -135,32 +138,38 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050009
 			public const int txtNewWorkoutText = 2131034121;
 			
-			// aapt resource value: 0x7f050016
-			public const int workoutInfoListView = 2131034134;
+			// aapt resource value: 0x7f05000c
+			public const int workoutBaseExerciseList = 2131034124;
+			
+			// aapt resource value: 0x7f05000b
+			public const int workoutBaseName = 2131034123;
 			
 			// aapt resource value: 0x7f050019
-			public const int workoutListGroup = 2131034137;
+			public const int workoutInfoListView = 2131034137;
 			
-			// aapt resource value: 0x7f050018
-			public const int workoutListName = 2131034136;
+			// aapt resource value: 0x7f05001c
+			public const int workoutListGroup = 2131034140;
+			
+			// aapt resource value: 0x7f05001b
+			public const int workoutListName = 2131034139;
 			
 			// aapt resource value: 0x7f050006
 			public const int workoutListView = 2131034118;
 			
-			// aapt resource value: 0x7f05001a
-			public const int workoutStartName = 2131034138;
+			// aapt resource value: 0x7f05001d
+			public const int workoutStartName = 2131034141;
 			
-			// aapt resource value: 0x7f05001f
-			public const int workoutStepsListGroup = 2131034143;
-			
-			// aapt resource value: 0x7f05001e
-			public const int workoutStepsListName = 2131034142;
+			// aapt resource value: 0x7f050022
+			public const int workoutStepsListGroup = 2131034146;
 			
 			// aapt resource value: 0x7f050021
-			public const int workoutStepsListReps = 2131034145;
+			public const int workoutStepsListName = 2131034145;
 			
-			// aapt resource value: 0x7f050020
-			public const int workoutStepsListSets = 2131034144;
+			// aapt resource value: 0x7f050024
+			public const int workoutStepsListReps = 2131034148;
+			
+			// aapt resource value: 0x7f050023
+			public const int workoutStepsListSets = 2131034147;
 			
 			static Id()
 			{

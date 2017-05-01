@@ -32,11 +32,11 @@ namespace ProjectFit
         private void ContinueButton_Click(object sender, EventArgs e)
         {
             newWorkoutName = txtNewWorkout.Text;
-            var selectExercises = new Intent(this, typeof(SelectExercisesActivity));
+            var newWorkoutBase = new Intent(this, typeof(NewWorkoutBaseActivity));
 
-            selectExercises.PutExtra("workoutName", newWorkoutName);
+            newWorkoutBase.PutExtra("workoutName", newWorkoutName);
             
-            StartActivity(selectExercises);
+            StartActivity(newWorkoutBase);
         }
     }
 }

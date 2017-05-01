@@ -6,9 +6,25 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:text="Large Text"
+        android:text="Workout Name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/workoutBaseName" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="323.5dp"
+        android:id="@+id/workoutBaseExerciseList" />
+    <Button
+        android:text="Add a new exercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddNewExercise" />
+    <Button
+        android:text="Done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDoneAddingExercise" />
 </LinearLayout>

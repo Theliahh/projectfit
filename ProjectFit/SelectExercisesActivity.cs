@@ -35,6 +35,8 @@ namespace ProjectFit
 
             var db = new SQLiteConnection(path);
 
+            SetTitle();
+
             var AllExercises = db.Table<Exercise>();
 
             mExercisesList = AllExercises.ToList();
@@ -52,9 +54,28 @@ namespace ProjectFit
         {
             var selectedItem = mExercisesList[e.Position];
 
-            var testActivity = new Intent(this, typeof(NewWorkoutActivity));
+            var selectedIntent = new Intent(this, typeof(SelectedExerciseActivity));
+            selectedIntent.PutExtra("exerciseName", selectedItem.Name);
 
-            StartActivity(testActivity);
+            StartActivityForResult(selectedIntent,3);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            if (requestCode == 3)
+            {
+                if (resultCode == Result.Ok)
+                {
+                    //Get reps and sets from Intent data
+                    //Send back reps, sets, and id (workout page will pull Exercise with id)
+                }
+            }
+        }
+
+        private void SetTitle()
+        {
+            var pageTitle = Intent.GetStringExtra("workoutName");
+            this.Title = pageTitle;
         }
     }
 }
