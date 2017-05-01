@@ -96,8 +96,8 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050000
 			public const int exerciseListName = 2131034112;
 			
-			// aapt resource value: 0x7f050013
-			public const int linearLayout1 = 2131034131;
+			// aapt resource value: 0x7f050010
+			public const int linearLayout1 = 2131034128;
 			
 			// aapt resource value: 0x7f050016
 			public const int linearLayout2 = 2131034134;
@@ -111,11 +111,11 @@ namespace ProjectFit
 			// aapt resource value: 0x7f05000f
 			public const int newWorkoutStepListName = 2131034127;
 			
-			// aapt resource value: 0x7f050011
-			public const int newWorkoutStepListReps = 2131034129;
+			// aapt resource value: 0x7f050012
+			public const int newWorkoutStepListReps = 2131034130;
 			
-			// aapt resource value: 0x7f050010
-			public const int newWorkoutStepListSets = 2131034128;
+			// aapt resource value: 0x7f050011
+			public const int newWorkoutStepListSets = 2131034129;
 			
 			// aapt resource value: 0x7f050007
 			public const int newWorkoutTitle = 2131034119;
@@ -135,8 +135,8 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050015
 			public const int selectedExerciseEditSets = 2131034133;
 			
-			// aapt resource value: 0x7f050012
-			public const int selectedExerciseName = 2131034130;
+			// aapt resource value: 0x7f050013
+			public const int selectedExerciseName = 2131034131;
 			
 			// aapt resource value: 0x7f050017
 			public const int selectedExerciseReps = 2131034135;

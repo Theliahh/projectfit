@@ -51,8 +51,8 @@ namespace ProjectFit.Resources
             var txtSets = view.FindViewById<TextView>(Resource.Id.newWorkoutStepListSets);
 
             txtName.Text = Steps[position].Exercise.Name;
-            txtReps.Text = Steps[position].Reps.ToString();
-            txtSets.Text = Steps[position].Sets.ToString();
+            txtReps.Text = "   Reps: " + Steps[position].Reps;
+            txtSets.Text = "Sets: " + Steps[position].Sets;
 
             return view;
         }

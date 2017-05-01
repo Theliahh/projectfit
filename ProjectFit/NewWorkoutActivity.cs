@@ -37,6 +37,8 @@ namespace ProjectFit
             newWorkoutBase.PutExtra("workoutName", newWorkoutName);
             
             StartActivity(newWorkoutBase);
+            Finish();
         }
+
     }
 }

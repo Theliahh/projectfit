@@ -28,6 +28,7 @@ namespace ProjectFit
             SetContentView(Resource.Layout.NewWorkoutBase);
 
             Button addNewExerciseButton = FindViewById<Button>(Resource.Id.btnAddNewExercise);
+            Button doneNewExerciseButton = FindViewById<Button>(Resource.Id.btnDoneAddingExercise);
             TextView workoutBaseTextView = FindViewById<TextView>(Resource.Id.workoutBaseName);
             stepsListView = FindViewById<ListView>(Resource.Id.newWorkoutBaseExerciseList);
             currentSteps = new List<WorkoutStep>();
@@ -36,8 +37,32 @@ namespace ProjectFit
 
             db = new SQLiteConnection(DbHelper.GetLocalDbPath());
 
-
+            db.CreateTable<Workout>();
             addNewExerciseButton.Click += AddNewExerciseButton_Click;
+            doneNewExerciseButton.Click += DoneNewExerciseButtonOnClick;
+        }
+
+        private void DoneNewExerciseButtonOnClick(object sender, EventArgs eventArgs)
+        {
+            Workout finishedWorkout = new Workout
+            {
+                Name = Intent.GetStringExtra("workoutName"),
+                IsCustom = true,
+                Steps = currentSteps
+            };
+            var firstOrDefault = currentSteps.FirstOrDefault();
+            if (firstOrDefault != null)
+                finishedWorkout.MuscleGroup = db.Get<Exercise>(firstOrDefault.ExerciseId).MuscleGroup;
+            //Add system to choose muscle group later I guess
+            db.Insert(finishedWorkout);
+            foreach (var step in currentSteps)
+            {
+                step.WorkoutId = finishedWorkout.Id;
+                db.Insert(step);
+            }
+
+            db.Close();
+            Finish();
         }
 
         private void AddNewExerciseButton_Click(object sender, EventArgs e)
