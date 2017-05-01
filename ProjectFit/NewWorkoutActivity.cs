@@ -15,6 +15,8 @@ namespace ProjectFit
     [Activity(Label = "NewWorkoutActivity")]
     public class NewWorkoutActivity : Activity
     {
+        private string newWorkoutName;
+        private EditText txtNewWorkout;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -22,7 +24,19 @@ namespace ProjectFit
             SetContentView(Resource.Layout.NewWorkout);
 
             Button continueButton = FindViewById<Button>(Resource.Id.btnNewWorkoutContinue);
-            EditText txtNewWorkout = FindViewById<EditText>(Resource.Id.txtNewWorkoutText);
+            txtNewWorkout = FindViewById<EditText>(Resource.Id.txtNewWorkoutText);
+
+            continueButton.Click += ContinueButton_Click;
+        }
+
+        private void ContinueButton_Click(object sender, EventArgs e)
+        {
+            newWorkoutName = txtNewWorkout.Text;
+            var selectExercises = new Intent(this, typeof(SelectExercisesActivity));
+
+            selectExercises.PutExtra("workoutName", newWorkoutName);
+
+            StartActivity(selectExercises);
         }
     }
 }

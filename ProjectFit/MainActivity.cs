@@ -131,6 +131,7 @@ namespace ProjectFit
             LoadPremadeWorkouts(workoutListView);
 
             workoutListView.ItemClick += WorkoutListViewOnItemClick;
+            newWorkoutButton.Click += NewWorkoutButton_Click;
 
             premadeWorkoutsButton.Click += (sender, args) =>
             {
@@ -144,6 +145,12 @@ namespace ProjectFit
                 newWorkoutButton.Visibility = Android.Views.ViewStates.Visible;
             };
 
+        }
+
+        private void NewWorkoutButton_Click(object sender, EventArgs e)
+        {
+            var newWorkoutActivity = new Intent(this, typeof(NewWorkoutActivity));
+            StartActivity(newWorkoutActivity);
         }
 
         private void WorkoutListViewOnItemClick(object o, AdapterView.ItemClickEventArgs itemClickEventArgs)
