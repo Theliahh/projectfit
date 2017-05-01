@@ -42,6 +42,19 @@ namespace ProjectFit
             var adapter = new ExerciseListAdapter(this, mExercisesList);
 
             mExercisesListView.Adapter = adapter;
+
+            db.Close();
+
+            mExercisesListView.ItemClick += MExercisesListView_ItemClick;
+        }
+
+        private void MExercisesListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var selectedItem = mExercisesList[e.Position];
+
+            var testActivity = new Intent(this, typeof(NewWorkoutActivity));
+
+            StartActivity(testActivity);
         }
     }
 }

@@ -44,7 +44,7 @@ namespace ProjectFit
             db.CreateTable<WorkoutStep>();
 
             //db.DeleteAll<Workout>();
-            //db.DeleteAll<Exercise>();
+            db.DeleteAll<Exercise>();
             //db.DeleteAll<WorkoutStep>();
 
             //Add all possible exercsises now
@@ -59,8 +59,68 @@ namespace ProjectFit
             AllExercises.Add(Pushups);
             Exercise InclineBench = new Exercise("Incline Bench Press", 5, "Arms");
             AllExercises.Add(InclineBench);
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 6,
+                Name = "Sit-Ups"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 7,
+                Name = "Front Planks"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 8,
+                Name = "Side Planks"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 9,
+                Name = "Russian Twists"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 10,
+                Name = "Russian Twists w/ Medicine Ball"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 11,
+                Name = "Russian Twists w/ Plates"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 12,
+                Name = "Leg Lifts"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Core",
+                ExerciseId = 13,
+                Name = "Crunches"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Arms",
+                ExerciseId = 14,
+                Name = "Overhead Press"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Back",
+                ExerciseId = 15,
+                Name = "Lat Pulldown"
+            });
             /*
-             * MuscleGroup can be Arms, Legs, Core, Shoulders (for now)
+             * MuscleGroup can be Arms, Legs, Core, Shoulders, back (for now)
              */
 
             var allWorkouts = db.Table<Workout>();
@@ -158,6 +218,7 @@ namespace ProjectFit
             Console.WriteLine(mPremadeWorkoutList[itemClickEventArgs.Position].Name);
             var infoActivity = new Intent(this, typeof(WorkoutInfoActivity));
             infoActivity.PutExtra("workoutId", mPremadeWorkoutList[itemClickEventArgs.Position].Id);
+
             StartActivity(infoActivity);
         }
 

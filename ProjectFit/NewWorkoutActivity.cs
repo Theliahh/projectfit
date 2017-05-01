@@ -35,7 +35,7 @@ namespace ProjectFit
             var selectExercises = new Intent(this, typeof(SelectExercisesActivity));
 
             selectExercises.PutExtra("workoutName", newWorkoutName);
-
+            
             StartActivity(selectExercises);
         }
     }
