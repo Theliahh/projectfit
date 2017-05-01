@@ -75,14 +75,14 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050019
 			public const int btnSelectedExerciseContinue = 2131034137;
 			
-			// aapt resource value: 0x7f050021
-			public const int btnStartWorkout = 2131034145;
-			
 			// aapt resource value: 0x7f05001d
 			public const int btnWorkoutInfoStart = 2131034141;
 			
 			// aapt resource value: 0x7f050022
-			public const int button2 = 2131034146;
+			public const int btnWorkoutStartEdit = 2131034146;
+			
+			// aapt resource value: 0x7f050021
+			public const int btnWorkoutStartStart = 2131034145;
 			
 			// aapt resource value: 0x7f050023
 			public const int button3 = 2131034147;

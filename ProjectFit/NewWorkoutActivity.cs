@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace ProjectFit
 {
-    [Activity(Label = "NewWorkoutActivity")]
+    [Activity(Label = "Create a New Workout")]
     public class NewWorkoutActivity : Activity
     {
         private string newWorkoutName;

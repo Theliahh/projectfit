@@ -15,17 +15,17 @@
         android:text="Start Workout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnStartWorkout" />
+        android:id="@+id/btnWorkoutStartStart" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1">
         <Button
-            android:text="I dont remember"
+            android:text="Edit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/button2" />
+            android:id="@+id/btnWorkoutStartEdit" />
         <Button
             android:text="This does something"
             android:layout_width="wrap_content"
