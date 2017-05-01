@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Android.App;
 using Android.Content;
@@ -8,7 +7,6 @@ using Android.Widget;
 using Android.OS;
 using Android.Views;
 using ProjectFit.Resources;
-using Environment = System.Environment;
 using SQLite;
 
 namespace ProjectFit
@@ -117,6 +115,12 @@ namespace ProjectFit
                 MuscleGroup = "Back",
                 ExerciseId = 15,
                 Name = "Lat Pulldown"
+            });
+            AllExercises.Add(new Exercise
+            {
+                MuscleGroup = "Cardio",
+                ExerciseId = 16,
+                Name = "Running"
             });
             /*
              * MuscleGroup can be Arms, Legs, Core, Shoulders, back (for now)

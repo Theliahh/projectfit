@@ -10,10 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
+using SQLite;
 
 namespace ProjectFit
 {
-    [Activity(Label = "SelectedExerciseActivity")]
+    [Activity(Label = "")]
     public class SelectedExerciseActivity : Activity
     {
         private EditText textSets;
@@ -26,10 +27,15 @@ namespace ProjectFit
             SetContentView(Resource.Layout.SelectedExercise);
 
             Button confirmButton = FindViewById<Button>(Resource.Id.btnSelectedExerciseContinue);
+            TextView exerciseTitle = FindViewById<TextView>(Resource.Id.selectedExerciseName);
             textSets = FindViewById<EditText>(Resource.Id.selectedExerciseEditSets);
             textReps = FindViewById<EditText>(Resource.Id.selectedExerciseEditReps);
 
             confirmButton.Click += ConfirmButton_Click;
+
+            var db = new SQLiteConnection(DbHelper.GetLocalDbPath());
+            exerciseTitle.Text = db.Get<Exercise>(Intent.GetIntExtra("exerciseId", 1)).Name;
+            db.Close();
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
