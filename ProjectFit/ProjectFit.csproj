@@ -76,6 +76,7 @@
     <Compile Include="Exercise.cs" />
     <Compile Include="ExerciseStep.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="NewWorkoutActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\WorkoutListAdapter.cs" />
