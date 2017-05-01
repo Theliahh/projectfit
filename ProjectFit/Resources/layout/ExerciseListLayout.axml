@@ -4,24 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="Create a New Workout"
+        android:text="Exercise Name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/newWorkoutTitle" />
+        android:id="@+id/exerciseListName" />
     <TextView
-        android:text="Workout Name"
+        android:text="Muscle Group"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/newWorkoutName" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtNewWorkoutText" />
-    <Button
-        android:text="Continue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnNewWorkoutContinue" />
+        android:id="@+id/exerciseListMuscleGroup" />
 </LinearLayout>

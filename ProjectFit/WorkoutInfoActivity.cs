@@ -59,13 +59,14 @@ namespace ProjectFit
             var adapter = new WorkoutStepListAdapter(this, displaySteps);
 
             exerciseListView.Adapter = adapter;
+            db.Close();
 
         }
 
         private void BtnStartButton_Click(object sender, EventArgs e)
         {
             var workoutActivity = new Intent(this, typeof(WorkoutActivity));
-
+            
             StartActivity(workoutActivity);
         }
     }
