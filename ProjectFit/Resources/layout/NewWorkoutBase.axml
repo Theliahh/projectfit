@@ -10,13 +10,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="40sp"
         android:id="@+id/workoutBaseName" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="323.5dp"
-        android:id="@+id/workoutBaseExerciseList" />
+        android:id="@+id/newWorkoutBaseExerciseList" />
     <Button
         android:text="Add a new exercise"
         android:layout_width="match_parent"

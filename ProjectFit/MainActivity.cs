@@ -31,13 +31,9 @@ namespace ProjectFit
             newWorkoutButton = FindViewById<Button>(Resource.Id.btnNewWorkout);
             newWorkoutButton.Visibility = Android.Views.ViewStates.Gone;
 
-
-            var sqliteFileName = "workoutDatabaseTest2.db3";
-            string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            var path = Path.Combine(libraryPath, sqliteFileName);
             mPremadeWorkoutList = new List<Workout>();
 
-            var db = new SQLiteConnection(path);
+            var db = new SQLiteConnection(DbHelper.GetLocalDbPath());
             
             db.CreateTable<Workout>();
             db.CreateTable<Exercise>();

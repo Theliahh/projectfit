@@ -56,6 +56,7 @@ namespace ProjectFit
 
             var selectedIntent = new Intent(this, typeof(SelectedExerciseActivity));
             selectedIntent.PutExtra("exerciseName", selectedItem.Name);
+            selectedIntent.PutExtra("exerciseId", selectedItem.ExerciseId);
 
             StartActivityForResult(selectedIntent,3);
         }
@@ -66,6 +67,16 @@ namespace ProjectFit
             {
                 if (resultCode == Result.Ok)
                 {
+                    Intent returnIntent = new Intent();
+
+                    var reps = data.GetIntExtra("reps", 0);
+                    var sets = data.GetIntExtra("sets", 1);
+                    var exerciseId = data.GetIntExtra("exerciseId", 1);
+                    returnIntent.PutExtra("reps", reps);
+                    returnIntent.PutExtra("sets", sets);
+                    returnIntent.PutExtra("exerciseId", exerciseId);
+                    SetResult(Result.Ok, returnIntent);
+                    Finish();
                     //Get reps and sets from Intent data
                     //Send back reps, sets, and id (workout page will pull Exercise with id)
                 }

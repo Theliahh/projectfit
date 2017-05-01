@@ -33,18 +33,17 @@ namespace ProjectFit
 
             btnStartButton.Click += BtnStartButton_Click;
 
-            var sqliteFileName = "workoutDatabaseTest2.db3";
-            string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            var path = Path.Combine(libraryPath, sqliteFileName);
+            var db = new SQLiteConnection(DbHelper.GetLocalDbPath());
 
-            var db = new SQLiteConnection(path);
             AllExercises = db.Table<Exercise>().ToList();
             var workoutToDisplay = db.Get<Workout>(workoutId);
             List<WorkoutStepDisplay> displaySteps = new List<WorkoutStepDisplay>();
+
             var stepsQuery = db.Table<WorkoutStep>();
             stepsQuery = stepsQuery.Where(c => c.WorkoutId == workoutToDisplay.Id);
             workoutToDisplay.Steps = stepsQuery.ToList();
             var workoutSteps = workoutToDisplay.Steps;
+
             foreach (var workoutStep in workoutSteps)
             {
                 displaySteps.Add(new WorkoutStepDisplay
