@@ -78,14 +78,14 @@ namespace ProjectFit
 			// aapt resource value: 0x7f05001d
 			public const int btnWorkoutInfoStart = 2131034141;
 			
-			// aapt resource value: 0x7f050028
-			public const int btnWorkoutStartEdit = 2131034152;
-			
-			// aapt resource value: 0x7f050027
-			public const int btnWorkoutStartStart = 2131034151;
-			
 			// aapt resource value: 0x7f050029
-			public const int button3 = 2131034153;
+			public const int btnWorkoutStartEdit = 2131034153;
+			
+			// aapt resource value: 0x7f050028
+			public const int btnWorkoutStartStart = 2131034152;
+			
+			// aapt resource value: 0x7f05002a
+			public const int button3 = 2131034154;
 			
 			// aapt resource value: 0x7f050004
 			public const int customWorkoutsButton = 2131034116;
@@ -120,6 +120,9 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050007
 			public const int newWorkoutTitle = 2131034119;
 			
+			// aapt resource value: 0x7f050021
+			public const int pager_title_strip = 2131034145;
+			
 			// aapt resource value: 0x7f050003
 			public const int premadeWorkoutsButton = 2131034115;
 			
@@ -144,11 +147,11 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050014
 			public const int selectedExerciseSets = 2131034132;
 			
-			// aapt resource value: 0x7f050022
-			public const int textView2 = 2131034146;
-			
 			// aapt resource value: 0x7f050023
-			public const int textView3 = 2131034147;
+			public const int textView2 = 2131034147;
+			
+			// aapt resource value: 0x7f050024
+			public const int textView3 = 2131034148;
 			
 			// aapt resource value: 0x7f050002
 			public const int topButtonLayout = 2131034114;
@@ -174,29 +177,29 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050006
 			public const int workoutListView = 2131034118;
 			
-			// aapt resource value: 0x7f050021
-			public const int workoutProcessExerciseName = 2131034145;
-			
-			// aapt resource value: 0x7f050025
-			public const int workoutProcessNumReps = 2131034149;
-			
-			// aapt resource value: 0x7f050024
-			public const int workoutProcessNumSets = 2131034148;
+			// aapt resource value: 0x7f050022
+			public const int workoutProcessExerciseName = 2131034146;
 			
 			// aapt resource value: 0x7f050026
-			public const int workoutStartName = 2131034150;
+			public const int workoutProcessNumReps = 2131034150;
 			
-			// aapt resource value: 0x7f05002b
-			public const int workoutStepsListGroup = 2131034155;
+			// aapt resource value: 0x7f050025
+			public const int workoutProcessNumSets = 2131034149;
 			
-			// aapt resource value: 0x7f05002a
-			public const int workoutStepsListName = 2131034154;
-			
-			// aapt resource value: 0x7f05002d
-			public const int workoutStepsListReps = 2131034157;
+			// aapt resource value: 0x7f050027
+			public const int workoutStartName = 2131034151;
 			
 			// aapt resource value: 0x7f05002c
-			public const int workoutStepsListSets = 2131034156;
+			public const int workoutStepsListGroup = 2131034156;
+			
+			// aapt resource value: 0x7f05002b
+			public const int workoutStepsListName = 2131034155;
+			
+			// aapt resource value: 0x7f05002e
+			public const int workoutStepsListReps = 2131034158;
+			
+			// aapt resource value: 0x7f05002d
+			public const int workoutStepsListSets = 2131034157;
 			
 			static Id()
 			{
@@ -233,22 +236,25 @@ namespace ProjectFit
 			public const int SelectExercises = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int WorkoutInfo = 2130903047;
+			public const int WorkoutFinished = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int WorkoutListLayout = 2130903048;
+			public const int WorkoutInfo = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int WorkoutProcess = 2130903049;
+			public const int WorkoutListLayout = 2130903049;
 			
 			// aapt resource value: 0x7f03000a
-			public const int WorkoutProcessPageLayout = 2130903050;
+			public const int WorkoutProcess = 2130903050;
 			
 			// aapt resource value: 0x7f03000b
-			public const int WorkoutStartLayout = 2130903051;
+			public const int WorkoutProcessPageLayout = 2130903051;
 			
 			// aapt resource value: 0x7f03000c
-			public const int WorkoutStepListLayout = 2130903052;
+			public const int WorkoutStartLayout = 2130903052;
+			
+			// aapt resource value: 0x7f03000d
+			public const int WorkoutStepListLayout = 2130903053;
 			
 			static Layout()
 			{

@@ -12,42 +12,36 @@ using Android.Views;
 using Android.Widget;
 using SQLite;
 using Object = Java.Lang.Object;
+using Android.Support.V4.App;
 
 namespace ProjectFit.Resources
 {
-    class WorkoutStepPagerAdapter : PagerAdapter
+    public class WorkoutStepPagerAdapter : FragmentPagerAdapter
     {
-        private List<WorkoutStep> workoutSteps;
-        private Context context;
+        public List<WorkoutStep> workoutSteps;
+        
         private SQLiteConnection db;
 
-        public WorkoutStepPagerAdapter(Context context, List<WorkoutStep> workoutSteps)
+        public WorkoutStepPagerAdapter(Android.Support.V4.App.FragmentManager fm, List<WorkoutStep> workoutSteps)
+            : base(fm)
         {
-            this.context = context;
             this.workoutSteps = workoutSteps;
             db = new SQLiteConnection(DbHelper.GetLocalDbPath());
         }
-        public override bool IsViewFromObject(View view, Object objectValue)
-        {
-            return view == objectValue;
-        }
-
         public override int Count => workoutSteps.Count;
 
-        public override Java.Lang.Object InstantiateItem(View container, int position)
+        public override Android.Support.V4.App.Fragment GetItem(int position)
         {
-            var textView = new TextView(context);
-            var currentExercise = db.Get<Exercise>(workoutSteps[position].ExerciseId);
-            textView.Text = currentExercise.Name;
-            var viewPager = container.JavaCast<ViewPager>();
-            viewPager.AddView(textView);
-            return textView;
+            var exerciseName = db.Get<Exercise>(workoutSteps[position].ExerciseId).Name;
+            
+            return WorkoutProcessFragment.newInstance(
+                workoutSteps[position].Reps, exerciseName, workoutSteps[position].Sets);
         }
 
-        public override void DestroyItem(View container, int position, Java.Lang.Object view)
+        public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
         {
-            var viewPager = container.JavaCast<ViewPager>();
-            viewPager.RemoveView(view as View);
+            var exerciseName = db.Get<Exercise>(workoutSteps[position].ExerciseId).Name;
+            return new Java.Lang.String(exerciseName);
         }
     }
 }

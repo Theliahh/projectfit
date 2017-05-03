@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.View;
@@ -12,11 +13,12 @@ using Android.Views;
 using Android.Widget;
 using ProjectFit.Resources;
 using SQLite;
+using Android.Support.V4.App;
 
 namespace ProjectFit
 {
     [Activity(Label = "WorkoutProcess")]
-    public class WorkoutProcessActivity : Activity
+    public class WorkoutProcessActivity : FragmentActivity
     {
         private Workout thisWorkout;
         private List<WorkoutStep> workoutSteps;
@@ -24,7 +26,6 @@ namespace ProjectFit
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
             SetContentView(Resource.Layout.WorkoutProcess);
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
 
@@ -34,8 +35,19 @@ namespace ProjectFit
 
             workoutSteps = db.Table<WorkoutStep>().Where(x => x.WorkoutId == workoutId).ToList();
 
-            viewPager.Adapter = new WorkoutStepPagerAdapter(this, workoutSteps);
+            WorkoutStepPagerAdapter adapter = new WorkoutStepPagerAdapter(SupportFragmentManager, workoutSteps);
+            
+            viewPager.Adapter = adapter;
 
+            viewPager.PageSelected += ViewPager_PageSelected;
+        }
+
+        private void ViewPager_PageSelected(object sender, ViewPager.PageSelectedEventArgs e)
+        {
+            if (e.Position == workoutSteps.Count)
+            {
+                
+            }
         }
     }
 }
