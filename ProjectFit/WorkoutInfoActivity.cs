@@ -64,7 +64,8 @@ namespace ProjectFit
 
         private void BtnStartButton_Click(object sender, EventArgs e)
         {
-            var workoutActivity = new Intent(this, typeof(WorkoutActivity));
+            var workoutActivity = new Intent(this, typeof(WorkoutStartActivity));
+            workoutActivity.PutExtra("workoutId", Intent.GetIntExtra("workoutId",1));
             
             StartActivity(workoutActivity);
         }
