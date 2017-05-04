@@ -20,6 +20,7 @@ namespace ProjectFit
         private Button newWorkoutButton;
         private SQLiteConnection db;
         private ListView workoutListView;
+        private Workout premadeUpperBodyWorkout;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -132,7 +133,7 @@ namespace ProjectFit
             {
 
             };
-            Workout premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
+            premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
             var workoutId = db.Insert(premadeUpperBodyWorkout);
             premadeUpperBodyWorkout.Id = workoutId;
             try{
@@ -191,36 +192,24 @@ namespace ProjectFit
             mPremadeWorkoutList.Add(premadeUpperBodyWorkout);
 
 
-            LoadPremadeWorkouts(workoutListView);
+            LoadPremadeWorkouts();
 
             newWorkoutButton.Click += NewWorkoutButton_Click;
             workoutListView.ItemClick += WorkoutListViewOnItemClick;
 
             premadeWorkoutsButton.Click += (sender, args) =>
             {
-                LoadPremadeWorkouts(workoutListView);
+                LoadPremadeWorkouts();
                 newWorkoutButton.Visibility = Android.Views.ViewStates.Gone;
-                workoutListView.ItemClick -= CustomWorkoutListViewOnItemClick;
-                workoutListView.ItemClick += WorkoutListViewOnItemClick;
             };
 
             customWorkoutsButton.Click += (sender, args) =>
             {
                 workoutListView.Adapter = null;
                 newWorkoutButton.Visibility = Android.Views.ViewStates.Visible;
-                LoadCustomWorkouts(workoutListView);
-                workoutListView.ItemClick -= WorkoutListViewOnItemClick;
-                workoutListView.ItemClick += CustomWorkoutListViewOnItemClick;
+                LoadCustomWorkouts();
             };
 
-        }
-
-        private void CustomWorkoutListViewOnItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            var infoActivity = new Intent(this, typeof(WorkoutInfoActivity));
-            infoActivity.PutExtra("workoutId", mCustomWorkoutList[e.Position].Id);
-
-            StartActivity(infoActivity);
         }
 
         private void NewWorkoutButton_Click(object sender, EventArgs e)
@@ -228,28 +217,43 @@ namespace ProjectFit
             var newWorkoutActivity = new Intent(this, typeof(NewWorkoutActivity));
             newWorkoutActivity.SetFlags(ActivityFlags.ClearTop);
             StartActivity(newWorkoutActivity);
-            
+
         }
 
         private void WorkoutListViewOnItemClick(object o, AdapterView.ItemClickEventArgs itemClickEventArgs)
         {
             var infoActivity = new Intent(this, typeof(WorkoutInfoActivity));
-            infoActivity.PutExtra("workoutId", mPremadeWorkoutList[itemClickEventArgs.Position].Id);
+            if (mCustomWorkoutList.Count > 0)
+            {
+                infoActivity.PutExtra("workoutId", mCustomWorkoutList[itemClickEventArgs.Position].Id);
+            }
+            else
+            {
+                infoActivity.PutExtra("workoutId", mPremadeWorkoutList[itemClickEventArgs.Position].Id);
+            }
+            
 
             StartActivity(infoActivity);
 
         }
 
-        private void LoadPremadeWorkouts(ListView workoutListView)
+        private void LoadPremadeWorkouts()
         {
             //ArrayAdapter<Workout> adapter = new ArrayAdapter<Workout>(this, Android.Resource.Layout.ListContent, mPremadeWorkoutList);
+            if (mPremadeWorkoutList.Count == 0)
+            {
+                mPremadeWorkoutList.Add(premadeUpperBodyWorkout);
+            }
             var adapter = new WorkoutListAdapter(this,mPremadeWorkoutList);
+            newWorkoutButton.Visibility = ViewStates.Gone;
 
             workoutListView.Adapter = adapter;
+            mCustomWorkoutList = new List<Workout>();
         }
 
-        private void LoadCustomWorkouts(ListView workoutListView)
+        private void LoadCustomWorkouts()
         {
+            newWorkoutButton.Visibility = ViewStates.Visible;
             try
             {
                 mCustomWorkoutList = db.Table<Workout>().Where(c => c.IsCustom).ToList();
@@ -261,13 +265,14 @@ namespace ProjectFit
             var adapter = new WorkoutListAdapter(this, mCustomWorkoutList);
 
             workoutListView.Adapter = adapter;
+            mPremadeWorkoutList = new List<Workout>();
         }
 
         protected override void OnRestart()
         {
             base.OnRestart();
-            LoadCustomWorkouts(workoutListView);
-            newWorkoutButton.Visibility = ViewStates.Visible;
+            LoadPremadeWorkouts();
+            
         }
     }
 }
