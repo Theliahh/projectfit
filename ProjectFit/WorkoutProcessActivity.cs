@@ -38,13 +38,18 @@ namespace ProjectFit
             WorkoutStepPagerAdapter adapter = new WorkoutStepPagerAdapter(SupportFragmentManager, workoutSteps);
             
             viewPager.Adapter = adapter;
-            viewPager.AddView(new Button(this)
-            {
-                Text = "Test"
-            });
-
+            viewPager.PageSelected += ViewPager_PageSelected;
         }
 
+        private void ViewPager_PageSelected(object sender, ViewPager.PageSelectedEventArgs e)
+        {
+            if (e.Position == workoutSteps.Count - 1)
+            {
+                SetContentView(Resource.Layout.WorkoutFinished);
+                Button workoutFinishedButton = FindViewById<Button>(Resource.Id.btnWorkoutFinished);
+                workoutFinishedButton.Click += WorkoutFinishedButton_Click;
+            }
+        }
 
         private void WorkoutFinishedButton_Click(object sender, EventArgs e)
         {

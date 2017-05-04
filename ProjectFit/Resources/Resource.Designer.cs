@@ -72,9 +72,6 @@ namespace ProjectFit
 			// aapt resource value: 0x7f05000a
 			public const int btnNewWorkoutContinue = 2131034122;
 			
-			// aapt resource value: 0x7f050029
-			public const int btnProcessFinished = 2131034153;
-			
 			// aapt resource value: 0x7f050019
 			public const int btnSelectedExerciseContinue = 2131034137;
 			
@@ -84,11 +81,11 @@ namespace ProjectFit
 			// aapt resource value: 0x7f05001f
 			public const int btnWorkoutInfoStart = 2131034143;
 			
-			// aapt resource value: 0x7f05002c
-			public const int btnWorkoutStartEdit = 2131034156;
-			
 			// aapt resource value: 0x7f05002b
-			public const int btnWorkoutStartStart = 2131034155;
+			public const int btnWorkoutStartEdit = 2131034155;
+			
+			// aapt resource value: 0x7f05002a
+			public const int btnWorkoutStartStart = 2131034154;
 			
 			// aapt resource value: 0x7f05002d
 			public const int button3 = 2131034157;
@@ -153,14 +150,11 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050014
 			public const int selectedExerciseSets = 2131034132;
 			
+			// aapt resource value: 0x7f05002c
+			public const int space1 = 2131034156;
+			
 			// aapt resource value: 0x7f05001c
 			public const int textView1 = 2131034140;
-			
-			// aapt resource value: 0x7f050025
-			public const int textView2 = 2131034149;
-			
-			// aapt resource value: 0x7f050026
-			public const int textView3 = 2131034150;
 			
 			// aapt resource value: 0x7f050002
 			public const int topButtonLayout = 2131034114;
@@ -195,8 +189,14 @@ namespace ProjectFit
 			// aapt resource value: 0x7f050027
 			public const int workoutProcessNumSets = 2131034151;
 			
-			// aapt resource value: 0x7f05002a
-			public const int workoutStartName = 2131034154;
+			// aapt resource value: 0x7f050026
+			public const int workoutProcessReps = 2131034150;
+			
+			// aapt resource value: 0x7f050025
+			public const int workoutProcessSets = 2131034149;
+			
+			// aapt resource value: 0x7f050029
+			public const int workoutStartName = 2131034153;
 			
 			// aapt resource value: 0x7f05002f
 			public const int workoutStepsListGroup = 2131034159;

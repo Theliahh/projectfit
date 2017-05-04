@@ -47,6 +47,8 @@ namespace ProjectFit
 
             //Add all possible exercsises now
             AllExercises = new List<Exercise>();
+            Exercise WorkoutDone = new Exercise("Workout Finished",0,"None");
+            AllExercises.Add(WorkoutDone);
             Exercise BenchPress  = new Exercise("Bench Press",1,"Arms");
             AllExercises.Add(BenchPress);
             Exercise BarCurls = new Exercise("Bar Curls",2,"Arms");
@@ -129,10 +131,7 @@ namespace ProjectFit
 
             var allWorkouts = db.Table<Workout>();
 
-            List<WorkoutStep> upperBodySteps = new List<WorkoutStep>
-            {
-
-            };
+            List<WorkoutStep> upperBodySteps = new List<WorkoutStep>();
             premadeUpperBodyWorkout = new Workout("Arms", "Basic Upperbody", false,upperBodySteps);
             var workoutId = db.Insert(premadeUpperBodyWorkout);
             premadeUpperBodyWorkout.Id = workoutId;
@@ -169,6 +168,13 @@ namespace ProjectFit
                         Reps = 10,
                         Sets = 4,
                         ExerciseId = 2,
+                        WorkoutId = workoutId
+                    },
+                    new WorkoutStep()
+                    {
+                        Reps = 0,
+                        Sets = 0,
+                        ExerciseId = 0,
                         WorkoutId = workoutId
                     }
                 };

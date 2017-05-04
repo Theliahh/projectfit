@@ -39,7 +39,7 @@ namespace ProjectFit
 
             var AllExercises = db.Table<Exercise>();
 
-            mExercisesList = AllExercises.ToList();
+            mExercisesList = AllExercises.Where(x => x.ExerciseId > 0 ).ToList();
 
             var adapter = new ExerciseListAdapter(this, mExercisesList);
 

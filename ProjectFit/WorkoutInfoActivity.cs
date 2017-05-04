@@ -40,7 +40,7 @@ namespace ProjectFit
             List<WorkoutStepDisplay> displaySteps = new List<WorkoutStepDisplay>();
 
             var stepsQuery = db.Table<WorkoutStep>();
-            stepsQuery = stepsQuery.Where(c => c.WorkoutId == workoutToDisplay.Id);
+            stepsQuery = stepsQuery.Where(c => c.WorkoutId == workoutToDisplay.Id && c.ExerciseId > 0);
             workoutToDisplay.Steps = stepsQuery.ToList();
             var workoutSteps = workoutToDisplay.Steps;
 

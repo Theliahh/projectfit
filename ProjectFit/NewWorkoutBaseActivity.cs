@@ -40,24 +40,35 @@ namespace ProjectFit
 
         private void DoneNewExerciseButtonOnClick(object sender, EventArgs eventArgs)
         {
-            Workout finishedWorkout = new Workout
+            if (currentSteps.Count > 0)
             {
-                Name = Intent.GetStringExtra("workoutName"),
-                IsCustom = true,
-                Steps = currentSteps
-            };
-            var firstOrDefault = currentSteps.FirstOrDefault();
-            if (firstOrDefault != null)
-                finishedWorkout.MuscleGroup = db.Get<Exercise>(firstOrDefault.ExerciseId).MuscleGroup;
-            //Add system to choose muscle group later I guess
-            db.Insert(finishedWorkout);
-            foreach (var step in currentSteps)
-            {
-                step.WorkoutId = finishedWorkout.Id;
-                db.Insert(step);
+                Workout finishedWorkout = new Workout
+                {
+                    Name = Intent.GetStringExtra("workoutName"),
+                    IsCustom = true,
+                    Steps = currentSteps
+                };
+                var firstOrDefault = currentSteps.FirstOrDefault();
+                if (firstOrDefault != null)
+                    finishedWorkout.MuscleGroup = db.Get<Exercise>(firstOrDefault.ExerciseId).MuscleGroup;
+                //Add system to choose muscle group later I guess
+                db.Insert(finishedWorkout);
+                currentSteps.Add(new WorkoutStep
+                {
+                    ExerciseId = 0,
+                    WorkoutId = currentSteps[0].WorkoutId,
+                    Reps = 0,
+                    Sets = 0
+                });
+                foreach (var step in currentSteps)
+                {
+                    step.WorkoutId = finishedWorkout.Id;
+                    db.Insert(step);
+                }
+
+                db.Close();
             }
 
-            db.Close();
             Finish();
         }
 
@@ -109,7 +120,7 @@ namespace ProjectFit
                 });
             }
 
-            var adapter = new NewWorkoutStepListAdapter(this, displaySteps);
+            var adapter = new NewWorkoutStepListAdapter(this, displaySteps.Where(x => x.Exercise.ExerciseId > 0).ToList());
             stepsListView.Adapter = adapter;
         }
     }

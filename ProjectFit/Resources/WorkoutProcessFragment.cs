@@ -1,5 +1,4 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -35,11 +34,23 @@ namespace ProjectFit.Resources
             TextView exerciseName = (TextView)view.FindViewById(Resource.Id.workoutProcessExerciseName);
             TextView numReps = (TextView)view.FindViewById(Resource.Id.workoutProcessNumReps);
             TextView numSets = (TextView)view.FindViewById(Resource.Id.workoutProcessNumSets);
+            TextView setsTextView = (TextView) view.FindViewById(Resource.Id.workoutProcessSets);
+            TextView repsTextView = (TextView) view.FindViewById(Resource.Id.workoutProcessReps);
 
+            if (exerciseString == "Workout Finished")
+            {
+                numReps.Visibility = ViewStates.Gone;
+                numSets.Visibility = ViewStates.Gone;
+                setsTextView.Visibility = ViewStates.Gone;
+                repsTextView.Visibility = ViewStates.Gone;
+            }
+            else
+            {
+                numReps.Text = reps.ToString();
+                numSets.Text = sets.ToString();
+            }
             exerciseName.Text = exerciseString;
-            numReps.Text = reps.ToString();
-            numSets.Text = sets.ToString();
-
+            
             return view;
         }
     }

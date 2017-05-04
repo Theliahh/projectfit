@@ -7,7 +7,7 @@ namespace ProjectFit
     {
         public static string GetLocalDbPath()
         {
-            var sqliteFileName = "workoutDatabaseTest3.db3";
+            var sqliteFileName = "workoutDatabaseTest4.db3";
             string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFileName);
 
