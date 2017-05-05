@@ -17,7 +17,7 @@ using Android.Support.V4.App;
 
 namespace ProjectFit
 {
-    [Activity(Label = "WorkoutProcess")]
+    [Activity(Label = "")]
     public class WorkoutProcessActivity : FragmentActivity
     {
         private Workout thisWorkout;
