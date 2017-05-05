@@ -29,11 +29,7 @@ namespace ProjectFit
 
             mExercisesListView = FindViewById<ListView>(Resource.Id.selectExercisesListView);
 
-            var sqliteFileName = "workoutDatabaseTest2.db3";
-            string libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            var path = Path.Combine(libraryPath, sqliteFileName);
-
-            var db = new SQLiteConnection(path);
+            var db = new SQLiteConnection(DbHelper.GetLocalDbPath());
 
             SetTitle();
 
