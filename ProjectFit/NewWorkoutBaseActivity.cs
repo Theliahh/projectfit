@@ -27,6 +27,7 @@ namespace ProjectFit
             Button doneNewExerciseButton = FindViewById<Button>(Resource.Id.btnDoneAddingExercise);
             TextView workoutBaseTextView = FindViewById<TextView>(Resource.Id.workoutBaseName);
             stepsListView = FindViewById<ListView>(Resource.Id.newWorkoutBaseExerciseList);
+            stepsListView.ItemLongClick += StepsListView_ItemLongClick;
             currentSteps = new List<WorkoutStep>();
 
             workoutBaseTextView.Text = Intent.GetStringExtra("workoutName");
@@ -36,6 +37,28 @@ namespace ProjectFit
             db.CreateTable<Workout>();
             addNewExerciseButton.Click += AddNewExerciseButton_Click;
             doneNewExerciseButton.Click += DoneNewExerciseButtonOnClick;
+        }
+
+        private void StepsListView_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.SetTitle("Confirm Delete");
+            alert.SetMessage("Are you sure you want to delete this exercise from your workout?");
+            alert.SetPositiveButton("Delete", (senderAlert, args) =>
+            {
+                db = new SQLiteConnection(DbHelper.GetLocalDbPath());
+                db.Delete<WorkoutStep>(currentSteps[e.Position].Id);
+                currentSteps.RemoveAt(e.Position);
+                NewStepAdded();
+                db.Close();
+            });
+            alert.SetNegativeButton("Cancel", (senderAlert, args) =>
+            {
+
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
         }
 
         private void DoneNewExerciseButtonOnClick(object sender, EventArgs eventArgs)
