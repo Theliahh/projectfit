@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Runtime;
+using Android.Views;
 using Android.Widget;
-using ProjectFit.Resources;
 using SQLite;
+using ProjectFit.Resources;
 
 namespace ProjectFit
 {
-    [Activity(Label = "New Workout")]
-    public class NewWorkoutBaseActivity : Activity
+    [Activity(Label = "Edit Workout")]
+    public class EditWorkoutActivity : Activity
     {
         private List<WorkoutStep> currentSteps;
-        private WorkoutStep newWorkoutStep;
+        private List<WorkoutStep> originalSteps;
+        private WorkoutStep editWorkoutStep;
+        private Workout thisWorkout;
         private ListView stepsListView;
         private SQLiteConnection db;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,11 +37,15 @@ namespace ProjectFit
             stepsListView.ItemLongClick += StepsListView_ItemLongClick;
             currentSteps = new List<WorkoutStep>();
 
-            workoutBaseTextView.Text = Intent.GetStringExtra("workoutName");
+            var workoutId = Intent.GetIntExtra("workoutId",0);
 
             db = new SQLiteConnection(DbHelper.GetLocalDbPath());
+            thisWorkout = db.Get<Workout>(workoutId);
+            currentSteps = db.Table<WorkoutStep>().Where(x => x.WorkoutId == workoutId).ToList();
+            originalSteps = db.Table<WorkoutStep>().Where(x => x.WorkoutId == workoutId).ToList();
+            NewStepAdded();
 
-            db.CreateTable<Workout>();
+            
             addNewExerciseButton.Click += AddNewExerciseButton_Click;
             doneNewExerciseButton.Click += DoneNewExerciseButtonOnClick;
         }
@@ -63,17 +74,11 @@ namespace ProjectFit
         {
             if (currentSteps.Count > 0)
             {
-                Workout finishedWorkout = new Workout
+                foreach(var step in originalSteps)
                 {
-                    Name = Intent.GetStringExtra("workoutName"),
-                    IsCustom = true,
-                    Steps = currentSteps
-                };
-                var firstOrDefault = currentSteps.FirstOrDefault();
-                if (firstOrDefault != null)
-                    finishedWorkout.MuscleGroup = db.Get<Exercise>(firstOrDefault.ExerciseId).MuscleGroup;
-                //Add system to choose muscle group later I guess
-                db.Insert(finishedWorkout);
+                    db.Delete<WorkoutStep>(step.Id);
+                }
+                currentSteps.RemoveAll(x =>x.ExerciseId == 0);
                 currentSteps.Add(new WorkoutStep
                 {
                     ExerciseId = 0,
@@ -81,9 +86,10 @@ namespace ProjectFit
                     Reps = 0,
                     Sets = 0
                 });
+                
                 foreach (var step in currentSteps)
                 {
-                    step.WorkoutId = finishedWorkout.Id;
+                    step.WorkoutId = thisWorkout.Id;
                     db.Insert(step);
                 }
 
@@ -97,7 +103,7 @@ namespace ProjectFit
         {
             var selectExercise = new Intent(this, typeof(SelectExercisesActivity));
 
-            var workoutName = Intent.GetStringExtra("workoutName");
+            var workoutName = thisWorkout.Name;
 
             selectExercise.PutExtra("workoutName", workoutName);
 
@@ -113,7 +119,7 @@ namespace ProjectFit
                 {
                     var reps = data.GetIntExtra("reps", 0);
                     var sets = data.GetIntExtra("sets", 1);
-                    var exerciseId = data.GetIntExtra("exerciseId",0);
+                    var exerciseId = data.GetIntExtra("exerciseId", 0);
 
                     currentSteps.Add(new WorkoutStep
                     {

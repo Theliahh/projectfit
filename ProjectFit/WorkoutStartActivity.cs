@@ -32,14 +32,16 @@ namespace ProjectFit
             thisWorkout = db.Get<Workout>(Intent.GetIntExtra("workoutId", 1));
             db.Close();
             workoutNameText.Text = thisWorkout.Name;
-
+            this.Title = thisWorkout.Name;
             startButton.Click += StartButton_Click;
             editButton.Click += EditButton_Click;
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            //We'll do something with this later
+            var workoutEditActivity = new Intent(this, typeof(EditWorkoutActivity));
+            workoutEditActivity.PutExtra("workoutId", thisWorkout.Id);
+            StartActivity(workoutEditActivity);
         }
 
         private void StartButton_Click(object sender, EventArgs e)
